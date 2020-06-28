@@ -4,18 +4,15 @@ Note this was tested on a Pi Model B rev 2
 
 ## Requirements
 
-`rustup target add arm-unknown-linux-gnueabi`
+`cargo install cross`
 
-`sudo apt-get install gcc-multilib-arm-linux-gnueabi`
-
-We need to add our build target to ~/.cargo/config by adding the following lines, so that rust knows which linker to use.
+Need `Cross.toml`, 0.1.16 is the last image version with openssl installed (openssl-1.0.1f)
 
 ```
- [target.arm-unknown-linux-gnueabi]
- linker = "arm-linux-gnueabi-gcc"
+[target.arm-unknown-linux-gnueabi]
+image = "rustembedded/cross:arm-unknown-linux-gnueabi-0.1.16"
 ```
 
 ## Build for PI
-`cargo build --target=arm-unknown-linux-gnueabi`
+`cross build --target=arm-unknown-linux-gnueabi`
 
-<!-- PKG_CONFIG_ALLOW_CROSS=1 cargo build --target=arm-unknown-linux-gnueabi -->
